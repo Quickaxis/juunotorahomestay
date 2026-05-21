@@ -716,44 +716,63 @@ img {
 }
 
 /* Carousel Navigation Arrows */
-.carousel-arrow {
+.carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(245, 237, 216, 0.85);
+  background: rgba(245, 237, 216, 0.92);
+  backdrop-filter: blur(8px);
+  border: none;
   border-radius: 50%;
   width: 36px;
   height: 36px;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease, background-color 0.2s ease;
-  color: #2A4A2A;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(30,26,18,0.15);
+  transition: all 0.2s ease;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-.carousel-arrow .material-icons {
-  font-size: 20px;
-}
-
-.carousel-arrow:hover {
+.carousel-btn:hover {
   background: rgba(245, 237, 216, 1);
+  transform: translateY(-50%) scale(1.08);
 }
 
-.carousel-arrow-left {
-  left: 12px;
+.carousel-btn-prev { left: 10px; }
+.carousel-btn-next { right: 10px; }
+
+.carousel-btn .material-icons {
+  font-size: 1.2rem;
+  color: #7B2D14;
 }
 
-.carousel-arrow-right {
-  right: 12px;
+/* Remove any hover-only visibility rule */
+/* Delete or override any rule that has:
+   .room-card:hover .carousel-btn or
+   .carousel-wrapper:hover .carousel-btn
+   with opacity: 0 or visibility: hidden */
+
+.carousel-wrapper:hover .carousel-btn,
+.room-card:hover .carousel-btn {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-/* Arrows visible on hover over carousel */
-.room-carousel:hover .carousel-arrow {
-  opacity: 1;
+/* Mobile — make arrows slightly smaller */
+@media (max-width: 768px) {
+  .carousel-btn {
+    width: 30px;
+    height: 30px;
+  }
+  .carousel-btn .material-icons {
+    font-size: 1rem;
+  }
+  .carousel-btn-prev { left: 8px; }
+  .carousel-btn-next { right: 8px; }
 }
 
 /* Carousel Dot Indicators */
